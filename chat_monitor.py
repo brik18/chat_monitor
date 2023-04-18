@@ -22,7 +22,7 @@ def save_chat(nombre_archivo, df):  # escritura de archivos en python
 def monitor(url: str):
     chat = pytchat.create(video_id=url)
     while chat.is_alive():
-        if time.time() - start_time > 60:  # 600 segundos son 10 minutos
+        if time.time() - start_time > 180:  # 600 segundos son 10 minutos
             save_chat('D:\\areas\\universidad\\proyecto_de_grado\\api_chats_live\\mi_archivo.txt',
                       df)
             break
