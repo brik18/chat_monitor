@@ -3,15 +3,20 @@ import psutil
 import os
 import datetime
 import pandas as pd
+from time import sleep
 
-def start_monitoring(url:str):
+
+def start_monitoring(url: str):
     try:
         stop_monitoring()
         p = subprocess.Popen(["python", "chat_monitor.py", f"--url={url}"])
         __save_pid(p.pid)
         return {"pid": p.pid}
     except Exception as e:
-        return {"error": str(e), "message": f"unable to start monitoring for the url:{url}"}
+        return {
+            "error": str(e),
+            "message": f"unable to start monitoring for the url:{url}",
+        }
 
 
 def stop_monitoring():
@@ -28,9 +33,11 @@ def stop_monitoring():
         process.kill()
     except psutil.NoSuchProcess:
         response = {"pid": pid, "status": "not found"}
+    sleep(1)
     __clean_data()
     __clean_pid()
     return response
+
 
 def analize_chat():
     try:
@@ -48,17 +55,21 @@ def analize_chat():
         return {"error": str(e), "message": "unable to analize chat"}
     return df
 
+
 # read all csv files in data folder and return a list of dataframes
 def __get_data():
     data = []
     for file in os.listdir("data"):
         if file.endswith(".csv"):
             data.append(pd.read_csv(f"data/{file}"))
-    return data    
+    return data
+
 
 def __clean_data():
     if os.path.exists("data"):
-        os.rename("data", f"data_old_{datetime.datetime.now().strftime('%y%m%d_%H%M%S')}")
+        os.rename(
+            "data", f"data_old_{datetime.datetime.now().strftime('%y%m%d_%H%M%S')}"
+        )
     os.mkdir("data")
 
 
@@ -67,7 +78,7 @@ def __clean_pid():
         os.remove("pid.txt")
 
 
-def __save_pid(pid:int):
+def __save_pid(pid: int):
     with open("pid.txt", "w") as f:
         f.write(str(pid))
 

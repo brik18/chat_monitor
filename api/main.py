@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from services import (stop_monitoring , start_monitoring, analize_chat)
+from services import stop_monitoring, start_monitoring, analize_chat
 
 app = FastAPI()
 
@@ -15,7 +15,7 @@ def read_item():
 
 
 @app.post("/start/monitor")
-def start_monitor(url:str):
+def start_monitor(url: str):
     return start_monitoring(url)
 
 
