@@ -23,7 +23,7 @@ def monitor(url: str):
         f_data = open_f_data()
         save_chat(f_data, ["time", "message"])
         n_files = 1
-        rotate_seconds = 900
+        rotate_seconds = 180
         while chat.is_alive():
             for c in chat.get().sync_items():
                 # df = (f"{c.datetime}|{c.message}|{c.type}|{c.messageEx}|{c.author.name}|{c.author.channelId}|{c.author.channelUrl}|{c.author.imageUrl}|{c.author.isChatOwner}|{c.author.isChatSponsor}|{c.author.isChatModerator}|{c.author.isVerified}")
@@ -52,7 +52,7 @@ def open_f_data():
     # get the current date and time in a string format
     current_time = now.strftime("%y%m%d_%H%M%S")
     # open the file with the current date and time
-    f_data = open(f"data/{current_time}.csv", "w")
+    f_data = open(f"data/{current_time}.csv", "w", encoding='utf-8')
     # return the file reference
     return f_data
 
