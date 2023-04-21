@@ -22,7 +22,7 @@ def monitor(url: str):
         f_data = open_f_data()
         save_chat(f_data, ["time", "message"])
         n_files = 1
-        rotate_seconds = 900
+        rotate_seconds = 180
         while chat.is_alive():
             for c in chat.get().sync_items():
                 # df = (f"{c.datetime}|{c.message}|{c.type}|{c.messageEx}|{c.author.name}|{c.author.channelId}|{c.author.channelUrl}|{c.author.imageUrl}|{c.author.isChatOwner}|{c.author.isChatSponsor}|{c.author.isChatModerator}|{c.author.isVerified}")
