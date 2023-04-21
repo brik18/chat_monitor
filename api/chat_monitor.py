@@ -8,7 +8,6 @@ import csv
 
 # tiempo inicio, tiempo actual
 start_time = datetime.datetime.now()
-print(os.environ.get("PYTHONPATH"))
 
 
 def save_chat(f_data, data):  # escritura de archivos en python
@@ -31,7 +30,9 @@ def monitor(url: str):
                 save_chat(f_data, message)
                 print(f"{c.datetime}|{c.message}")
             # if the current time is 15 minutes after the start time
-            if (datetime.datetime.now() - start_time).seconds > rotate_seconds * n_files:
+            if (
+                datetime.datetime.now() - start_time
+            ).seconds > rotate_seconds * n_files:
                 # close the file
                 close_f_data(f_data)
                 # open a new file
@@ -52,7 +53,7 @@ def open_f_data():
     # get the current date and time in a string format
     current_time = now.strftime("%y%m%d_%H%M%S")
     # open the file with the current date and time
-    f_data = open(f"data/{current_time}.csv", "w", encoding='utf-8')
+    f_data = open(f"data/{current_time}.csv", "w", encoding="UTF-8")
     # return the file reference
     return f_data
 
