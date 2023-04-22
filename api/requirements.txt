@@ -4,4 +4,5 @@ psutil
 pytchat==0.5.5
 uvicorn[standar]==0.21.1
 pysentimiento==0.4.2
-tensorflow==2.11.0 
+tensorflow==2.11.0
+scikit-learn==1.2.2

@@ -21,25 +21,21 @@ def monitor(url: str):
         chat = pytchat.create(video_id=url)
         f_data = open_f_data()
         save_chat(f_data, ["time", "message"])
-        n_files = 1
-        rotate_seconds = 180
+        #n_files = 1
+        #rotate_seconds = 180
         while chat.is_alive():
             for c in chat.get().sync_items():
                 # df = (f"{c.datetime}|{c.message}|{c.type}|{c.messageEx}|{c.author.name}|{c.author.channelId}|{c.author.channelUrl}|{c.author.imageUrl}|{c.author.isChatOwner}|{c.author.isChatSponsor}|{c.author.isChatModerator}|{c.author.isVerified}")
                 message = [c.datetime, c.message]
                 save_chat(f_data, message)
-                print(f"{c.datetime}|{c.message}")
             # if the current time is 15 minutes after the start time
-            if (
-                datetime.datetime.now() - start_time
-            ).seconds > rotate_seconds * n_files:
-                # close the file
-                close_f_data(f_data)
-                # open a new file
-                f_data = open_f_data()
-                # increment the file counter
-                n_files += 1
-
+            #if (datetime.datetime.now() - start_time).seconds > rotate_seconds * n_files:
+            #    # close the file
+            #    close_f_data(f_data)
+            #    # open a new file
+            #    f_data = open_f_data()
+            #    # increment the file counter
+            #    n_files += 1
         close_f_data(f_data)
     except Exception as e:
         print(e)
