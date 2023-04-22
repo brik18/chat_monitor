@@ -28,7 +28,6 @@ def monitor(url: str):
                 # df = (f"{c.datetime}|{c.message}|{c.type}|{c.messageEx}|{c.author.name}|{c.author.channelId}|{c.author.channelUrl}|{c.author.imageUrl}|{c.author.isChatOwner}|{c.author.isChatSponsor}|{c.author.isChatModerator}|{c.author.isVerified}")
                 message = [c.datetime, c.message]
                 save_chat(f_data, message)
-                print(f"{c.datetime}|{c.message}")
             # if the current time is 15 minutes after the start time
             if (
                 datetime.datetime.now() - start_time
