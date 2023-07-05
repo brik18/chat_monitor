@@ -1,0 +1,13 @@
+#from python:3.9-slim
+from python:3.9-slim-bullseye
+WORKDIR api
+COPY api/*.py ./
+#COPY main.py main.py
+#COPY chat_monitor.py chat_monitor.py
+#COPY services.py services.py
+COPY api/requirements.txt requirements.txt
+RUN useradd -ms /bin/bash api && chown -R api:api /api
+USER api
+RUN pip install -r requirements.txt && rm -rf ~/.cache/pip 
+ENV PATH /home/api/.local/bin:${PATH}
+ENTRYPOINT ["uvicorn", "--host", "0.0.0.0", "--port", "8000", "main:app"]

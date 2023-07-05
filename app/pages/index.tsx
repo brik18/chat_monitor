@@ -11,7 +11,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <h1 className={styles.title}>Welcome to Live Chat Monitoring</h1>
+        <h1 className={styles.title}>Análisis de sentimientos en tiempo real para intervenciones de chat en videoconferencias por streaming</h1>
         <p className={styles.description}>
           Start monitoring by writing and YouTube Live URL
         </p>
