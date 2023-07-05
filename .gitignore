@@ -2,3 +2,6 @@ __pycache__/
 node_modules/
 .next/
 .vscode/
+api/analized
+api/data_old*/
+app/package-lock.json
