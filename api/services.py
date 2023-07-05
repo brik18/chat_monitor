@@ -86,9 +86,9 @@ def __predict_sentimens(chats):
     df = df.groupby(["output"])["output"].count()
     _data = df[:]/len(chats)
     return {
-            "NEG":_data["NEG"],
-            "NEU":_data["NEU"],
-            "POS":_data["POS"]
+            "NEG": _data["NEG"] if "NEG" in _data.keys() else 0,
+            "NEU": _data["NEU"] if "NEU" in _data.keys() else 0,
+            "POS": _data["POS"] if "POS" in _data.keys() else 0
             }
 
 # read all csv files in data folder and return a list of dataframes

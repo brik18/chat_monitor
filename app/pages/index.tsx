@@ -15,9 +15,7 @@ export default function Home() {
         <p className={styles.description}>
           Start monitoring by writing and YouTube Live URL
         </p>
-        <p className={styles.description}>
-          <FormMonitor styles={styles} />
-        </p>
+        <FormMonitor styles={styles} />
       </main>
       <footer className={styles.footer}>Chat Monitor</footer>
     </div>
