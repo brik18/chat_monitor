@@ -49,7 +49,7 @@ export default function FormMonitor(styles: any) {
     e.preventDefault()    
     if(!(urlPatternValidation(url) && (url != "" || url != undefined)) ) return;
     setIsLoading(true);
-    fetch(`http://localhost:8000/start/monitor?url=${url}`, {
+    fetch(`/api/start?url=${url}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -70,7 +70,7 @@ export default function FormMonitor(styles: any) {
   };
   const stopMonitor = (e: any) => {
     e.preventDefault();
-    fetch("http://localhost:8000/stop/monitor", {
+    fetch("/api/stop", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -96,7 +96,7 @@ export default function FormMonitor(styles: any) {
   const analizeChat = (e: any) => {
     e.preventDefault();
     setIsLoading(true);
-    fetch("http://localhost:8000/chat/analize")
+    fetch("/api/analize")
       .then((response) => response.json())
       .then((data) => {
         // Aquí puedes usar los datos que recibiste de la API
