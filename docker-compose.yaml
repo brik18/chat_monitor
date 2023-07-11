@@ -1,0 +1,10 @@
+services:
+  app:
+    image: chat-monitor/front-app
+    ports:
+      - "3000:3000"
+  api:
+    image: "chat-monitor/back-api"
+    ports:
+      - "8000:8000"
+    network_mode: "bridge"
